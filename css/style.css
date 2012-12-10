@@ -1,0 +1,25 @@
+body 
+{
+	background-color:white;
+	font-family: Consolas, Courier;
+	font-size:13px;
+	color:#333;
+}
+
+
+h1
+{
+	color:#099;
+}
+
+.link
+{
+	color:#D14;
+}
+
+.container
+{
+	margin-top:50px;
+	margin-left:50px;
+	max-width:600px;
+}
