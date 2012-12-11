@@ -1,0 +1,42 @@
+{
+	"name": "Rafael Albuquerque",
+	"description": "<p>Hello world.</p><p>I'm a web developer, full-time dreamer, music addict, soon-to-be king of the world and other things I can't really remember at the moment.</p><p>This is just a landing page with useless information. Yes, I don't have anything relevant to put here.</p><p>You may find me on every social network under the name of <b>rafaqueque</b>. I'm pretty sure you'll be amazed by the things I publish.</p><p>Or not.</p>",
+	"links": [
+		{ 
+			"url": "http://rafaqueque.com", 
+			"description": "Blog" 
+		}, 
+		{ 
+			"url": "http://twitter.com/rafaqueque" , 
+			"description": "Twitter" 
+		}, 
+		{ 
+			"url": "http://www.linkedin.com/in/crafaelsalbuquerque", 
+			"description": "LinkedIn" 
+		}, 
+		{ 
+			"url": "http://github.com/rafaqueque", 
+			"description": "GitHub" 
+		}, 
+		{ 
+			"url": "http://instagram.com/rafaqueque", 
+			"description": "Instagram" 
+		},
+		{ 
+			"url": "http://last.fm/user/rafaqueque", 
+			"description": "Last.fm" 
+		}
+	],
+	"projects": [
+		{ 
+			"url": "http://rafael.pt", 
+			"site": "rafael.pt",
+			"description": "This useless landing page" 
+		}, 
+		{ 
+			"url": "http://canileave.com/?place=new+york", 
+			"site": "canileave.com",
+			"description": "Can I leave? — Real-time Weather Report" 
+		} 
+	]	
+}
