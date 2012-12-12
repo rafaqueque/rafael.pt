@@ -5,6 +5,4 @@ $(document).ready(function(){
             $('.container').html(Mustache.to_html(template, data));
         });
     });
-    
 });
-
