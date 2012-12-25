@@ -24,7 +24,7 @@ Header set Cache-Control "max-age=172800, proxy-revalidate"
 
 # 1 MIN
 
-<FilesMatch "\.(html|htm|php)$">
+<FilesMatch "\.(html|htm|php|json)$">
 
 Header set Cache-Control "max-age=60, private, proxy-revalidate"
 
