@@ -30,7 +30,7 @@
 			"description": "This useless landing page" 
 		}, 
 		{ 
-			"url": "http://canileave.com/?place=new+york", 
+			"url": "http://canileave.com/#new+york", 
 			"site": "canileave.com",
 			"description": "Can I leave? — Real-time Weather Report" 
 		} 
