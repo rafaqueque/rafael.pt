@@ -1,5 +1,7 @@
 body 
 {
+  margin:0;
+  padding:0;
 	background-color:white;
 	font-family: 'Courier New';
 	font-size:15px;
@@ -21,4 +23,29 @@ h1
 	margin-top:50px;
 	margin-left:50px;
 	max-width:600px;
+}
+
+
+/* terminal */
+#terminal 
+{
+  background-color:black;
+  color:white;
+  padding:20px;
+}
+
+#terminal span 
+{
+  color:#58AD69;
+}
+
+#terminal input 
+{
+  width:80%;
+  border:none;
+  background-color:black;
+  color:white;
+  outline:none;
+  font-family:'Courier New';
+  font-size:15px;
 }
