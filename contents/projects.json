@@ -1,0 +1,16 @@
+{
+  "name": "Rafael Albuquerque",
+  "description": "<p>At the moment, I have only one (real) project launched and a useless landing page, but I'm working on new stuff and I'm excited about it.</p><p>Can't wait to share with everyone!</p>",
+  "projects": [
+    { 
+      "url": "http://rafael.pt", 
+      "site": "rafael.pt",
+      "description": "This useless landing page" 
+    }, 
+    { 
+      "url": "http://canileave.com/#new+york", 
+      "site": "canileave.com",
+      "description": "Can I leave? — Real-time Weather Report" 
+    } 
+  ] 
+}

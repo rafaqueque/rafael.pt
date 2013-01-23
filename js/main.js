@@ -1,5 +1,5 @@
 var commands_available = ["ls","cd","clear","help"];
-var pages_available = ["index"];
+var pages_available = ["index","projects"];
 
 
 function term_output(args)
