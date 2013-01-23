@@ -1,15 +1,14 @@
 body 
 {
 	background-color:white;
-	font-family: 'Rambla', sans-serif;
-	font-size:14px;
+	font-family: 'Courier New';
+	font-size:15px;
 	color:#333;
 }
 
 h1
 {
 	color:#58AD69;
-  font-family: 'Crimson Text', serif;
 }
 
 .link
