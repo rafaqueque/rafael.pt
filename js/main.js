@@ -1,6 +1,23 @@
+/* belongs to Mustache.js, to prevent some XSS */
+var entityMap = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': '&quot;',
+  "'": '&#39;',
+  "/": '&#x2F;'
+};
+
+function escapeHtml(string) {
+  return String(string).replace(/[&<>"'\/]/g, function (s) {
+    return entityMap[s];
+  });
+}
+
+
+/* allowed commands and pages */
 var commands_available = ["ls","cd","clear","help"];
 var pages_available = ["index","projects"];
-
 
 function term_output(args)
 {
@@ -44,7 +61,7 @@ function term_cd(args)
         });
       });
 
-      term_output('page "'+args+'" loaded.');
+      term_output('page "'+args+'" loaded. type "ls" to view the available pages.');
     }
     else
     {
@@ -67,16 +84,16 @@ $(document).ready(function(){
   $('form[name="terminal"]').on('submit', function(e){
     e.preventDefault();
 
-    var input = $(this).find('input').val() || null;
+    var input = escapeHtml($(this).find('input').val()) || null;
 
     if (input)
     {
       var command = input.split(" ")[0];
-      var arguments = input.split(" ")[1];
+      var arguments = input.split(" ")[1] || null;
 
       if ($.inArray(command,commands_available) !== -1)
       {
-        eval('term_'+command+((arguments) ? '("'+arguments+'")' : '()'));
+        window['term_'+command].apply(window, new Array(arguments));
       } 
       else
       {
