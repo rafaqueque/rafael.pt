@@ -17,7 +17,7 @@ function escapeHtml(string) {
 
 /* allowed commands and pages */
 var commands_available = ["ls","cd","clear","help"];
-var pages_available = ["index","projects"];
+var pages_available = ["index","projects","github"];
 
 function term_output(args)
 {
@@ -57,7 +57,7 @@ function term_cd(args)
 
       $.get('templates/'+args+'.tpl', function(template){
         $.getJSON('contents/'+args+'.json', function(data){
-            $('.container').html(Mustache.to_html(template, data));
+          $('.container').html(Mustache.to_html(template, data));
         });
       });
 

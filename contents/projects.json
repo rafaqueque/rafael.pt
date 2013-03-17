@@ -11,6 +11,11 @@
       "url": "http://canileave.com/#new+york", 
       "site": "canileave.com",
       "description": "Can I leave? — Real-time Weather Report" 
+    },
+    { 
+      "url": "https://github.com/rafaqueque/jquery-typewriter", 
+      "site": "github.com/rafaqueque/jquery-typewriter",
+      "description": "[plugin] jQuery Typewriter - yet another wat to get punched in the face" 
     } 
   ] 
 }
