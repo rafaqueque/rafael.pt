@@ -15,90 +15,114 @@ function escapeHtml(string) {
 }
 
 
-/* allowed commands and pages */
-var commands_available = ["ls","cd","clear","help"];
-var pages_available = ["index","projects","github"];
 
-function term_output(args)
-{
-  $('form[name="terminal"] div').html(args ? args+'<br><br>type "help" for more information.' : '');
-  $('form[name="terminal"] input').val('');
-}
 
-function term_help(args)
-{
-  term_output('Usage: <br> "ls" &mdash; view existing pages <br> "cd [page]" &mdash; load page <br> "clear" &mdash; clear everything <br> "help" &mdash; this');
-}
 
-function term_clear(args)
-{
-  term_output();
-  $('.container').html('');
-}
 
-function term_ls(args)
-{
-  var html = '';
-  $.each(pages_available, function(i, page){
-    html += page+'&nbsp;&nbsp;&nbsp;';
-  });
 
-  term_output(html);
+/* Terminal emulation class */
+function Terminal(){
 
-  return true;
-}
-
-function term_cd(args)
-{
-  if (args)
-  {
-    if ($.inArray(args,pages_available) !== -1)
-    {
-
-      $.get('templates/'+args+'.tpl', function(template){
-        $.getJSON('contents/'+args+'.json', function(data){
-          $('.container').html(Mustache.to_html(template, data));
-        });
-      });
-
-      term_output('page "'+args+'" loaded. type "ls" to view the available pages.');
-    }
-    else
-    {
-      term_output('page "'+args+'" not found! type "ls" to view the available pages.');
-    }
+  /* output command */
+  this.__output = function(args){
+    $('form[name="terminal"] div').html(args ? args+'<br><br>type "help" for more information.' : '');
+    $('form[name="terminal"] input').val('');
+    return true;
   }
 
-  return true;
+
+  /* 'help' command */
+  this.help = function(args)
+  {
+    this.__output('Usage: <br> "ls" &mdash; view existing pages <br> "cd [page]" &mdash; load page <br> "clear" &mdash; clear everything <br> "help" &mdash; this');
+    return true;
+  }
+
+
+  /* 'clear' command */
+  this.clear = function(args)
+  {
+    this.__output();
+    $('.container').html('');
+    return true;
+  }
+
+
+  /* 'ls' command */
+  this.ls = function(args)
+  {
+    var html = '';
+    $.each(pages_available, function(i, page){
+      html += page+'&nbsp;&nbsp;&nbsp;';
+    });
+
+    this.__output(html);
+    return true;
+  }
+
+
+  /* 'cd' command */
+  this.cd = function(args)
+  {
+    var pages_available = ['index', 'projects'];
+
+    if (args)
+    {
+      if ($.inArray(args,pages_available) !== -1)
+      {
+        $.get('templates/'+args+'.tpl', function(template){
+          $.getJSON('contents/'+args+'.json', function(data){
+            $('.container').html(Mustache.to_html(template, data));
+          });
+        });
+
+        this.__output('page "'+args+'" loaded. type "ls" to view the available pages.');
+      }
+      else
+      {
+        this.__output('page "'+args+'" not found! type "ls" to view the available pages.');
+      }
+    }
+    return true;
+  }
 }
+
+
   
 
 
 $(document).ready(function(){
 
-  term_cd('index');
+  /* init the Terminal class and show 'index' page */
+  var terminal = new Terminal();
+  terminal.cd('index');
+
+
   $('form[name="terminal"] input').val('cd index');
   $('form[name="terminal"] input').focus();
 
 
+  /* submit handler */
   $('form[name="terminal"]').on('submit', function(e){
     e.preventDefault();
 
+    /* input properly escaped and protected */
     var input = escapeHtml($(this).find('input').val()) || null;
 
     if (input)
     {
-      var command = input.split(" ")[0];
-      var arguments = input.split(" ")[1] || null;
+      var command = input.split(' ')[0];
+      var arguments = input.split(' ')[1] || null;
 
-      if ($.inArray(command,commands_available) !== -1)
+      /* check if command exists */
+      if (typeof terminal[command] == 'function')
       {
-        window['term_'+command].apply(window, new Array(arguments));
+        /* call it with arguments if needed */
+        terminal[command].apply(terminal, new Array(arguments));
       } 
       else
       {
-        term_output('-bash: '+command+': command not found')
-        return false;
+        terminal.__output('-bash: '+command+': command not found')
       }
     }
 
