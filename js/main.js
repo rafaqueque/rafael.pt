@@ -23,8 +23,13 @@ function escapeHtml(string) {
 /* Terminal emulation class */
 function Terminal(){
 
+  /* pages available to display */
+  var pages_available = ['index', 'projects'];
+
+
   /* output command */
-  this.__output = function(args){
+  this.__output = function(args)
+  {
     $('form[name="terminal"] div').html(args ? args+'<br><br>type "help" for more information.' : '');
     $('form[name="terminal"] input').val('');
     return true;
@@ -64,8 +69,6 @@ function Terminal(){
   /* 'cd' command */
   this.cd = function(args)
   {
-    var pages_available = ['index', 'projects'];
-
     if (args)
     {
       if ($.inArray(args,pages_available) !== -1)
