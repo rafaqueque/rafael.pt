@@ -15,11 +15,6 @@ function escapeHtml(string) {
 }
 
 
-
-
-
-
-
 /* Terminal emulation class */
 function Terminal(){
 
@@ -76,6 +71,10 @@ function Terminal(){
         $.get('templates/'+args+'.tpl', function(template){
           $.getJSON('contents/'+args+'.json', function(data){
             $('.container').html(Mustache.to_html(template, data));
+
+            window.location.hash = args;
+            $('form[name="terminal"] input').val('cd '+args);
+
           });
         });
 
@@ -91,17 +90,32 @@ function Terminal(){
 }
 
 
-  
-
-
 $(document).ready(function(){
 
   /* init the Terminal class and show 'index' page */
   var terminal = new Terminal();
-  terminal.cd('index');
 
 
-  $('form[name="terminal"] input').val('cd index');
+  /* permalinks support */
+  if (window.location.hash)
+  {
+    var requested_page = window.location.hash.split("/")[0].replace('#','') || null;
+
+    if (requested_page)
+    {
+      terminal.cd(requested_page);
+    }
+    else
+    {
+      terminal.cd('index');
+    }
+  }
+  else
+  {
+    terminal.cd('index');
+  }
+    
+
   $('form[name="terminal"] input').focus();
 
 
