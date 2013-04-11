@@ -16,10 +16,14 @@ function escapeHtml(string) {
 
 
 /* Terminal emulation class */
-function Terminal(){
+function Terminal()
+{
 
   /* pages available to display */
-  var pages_available = ['index', 'projects'];
+  var pages_available = {
+    static: ['index', 'projects'],
+    dynamic: ['github']
+  };
 
 
   /* output command */
@@ -64,21 +68,87 @@ function Terminal(){
   /* 'cd' command */
   this.cd = function(args)
   {
+
+    var _page_type = 'static';
+    var _page_exists = false;
+
+    if ($.inArray(args,pages_available.static) !== -1)
+    {
+      _page_type = 'static';
+      _page_exists = true;
+    }
+
+    if ($.inArray(args,pages_available.dynamic) !== -1)
+    {
+      _page_type = 'dynamic';
+      _page_exists = true;
+    }
+
+
     if (args)
     {
-      if ($.inArray(args,pages_available) !== -1)
+
+      /* if page exists */
+      if (_page_exists)
       {
-        $.get('templates/'+args+'.tpl', function(template){
-          $.getJSON('contents/'+args+'.json', function(data){
-            $('.container').html(Mustache.to_html(template, data));
 
-            window.location.hash = args;
-            $('form[name="terminal"] input').val('cd '+args);
+        /* if page is static */
+        if (_page_type == 'static')
+        {
+          $.get('templates/'+args+'.tpl', function(template){
+            $.getJSON('contents/'+args+'.json', function(data){
+              $('.container').html(Mustache.to_html(template, data));
 
+              window.location.hash = args;
+              $('form[name="terminal"] input').val('cd '+args);
+
+            });
           });
-        });
 
-        this.__output('page "'+args+'" loaded. type "ls" to view the available pages.');
+          this.__output('page "'+args+'" loaded. type "ls" to view the available pages.');
+        }
+
+        /* if page is dynamic */
+        if (_page_type == 'dynamic')
+        {
+
+
+          /* github info parse */
+          if (args == 'github')
+          {
+
+            $.get('templates/'+args+'.tpl', function(template){
+              $.getJSON('https://api.github.com/users/rafaqueque/repos', function(github){
+
+                var repositories = new Array();
+
+                /* go through each repo */
+                $.each(github, function(i,obj){
+                  var _temp = { name: obj.full_name, description: obj.description, url: obj.html_url }; 
+                  repositories.push(_temp);
+                });
+
+                /* template json */
+                var data = {
+                  name: "Rafael Albuquerque",
+                  description: "<p>Oh, my repos.</p>",
+                  repositories: repositories
+                };
+ 
+
+                $('.container').html(Mustache.to_html(template, $.parseJSON(JSON.stringify(data))));
+
+                window.location.hash = args;
+                $('form[name="terminal"] input').val('cd '+args);
+
+              });
+            });
+
+            this.__output('page "'+args+'" loaded. type "ls" to view the available pages.');
+
+          }
+        }
+
       }
       else
       {
@@ -139,7 +209,7 @@ $(document).ready(function(){
       } 
       else
       {
-        terminal.__output('-bash: '+command+': command not found')
+        terminal.__output('-bash: '+command+': command not found');
       }
     }
 
