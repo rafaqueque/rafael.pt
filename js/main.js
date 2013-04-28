@@ -56,8 +56,11 @@ function Terminal()
   this.ls = function(args)
   {
     var html = '';
-    $.each(pages_available, function(i, page){
-      html += page+'&nbsp;&nbsp;&nbsp;';
+
+    $.each(pages_available, function(i, type){
+      $.each(type, function(i, page){
+        html += page+'&nbsp;&nbsp;&nbsp;';
+      });
     });
 
     this.__output(html);
@@ -68,7 +71,6 @@ function Terminal()
   /* 'cd' command */
   this.cd = function(args)
   {
-
     var _page_type = 'static';
     var _page_exists = false;
 
@@ -112,11 +114,9 @@ function Terminal()
         if (_page_type == 'dynamic')
         {
 
-
           /* github info parse */
           if (args == 'github')
           {
-
             $.get('templates/'+args+'.tpl', function(template){
               $.getJSON('https://api.github.com/users/rafaqueque/repos', function(github){
 
@@ -135,7 +135,6 @@ function Terminal()
                   repositories: repositories
                 };
  
-
                 $('.container').html(Mustache.to_html(template, $.parseJSON(JSON.stringify(data))));
 
                 window.location.hash = args;
