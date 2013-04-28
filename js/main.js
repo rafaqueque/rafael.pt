@@ -214,7 +214,12 @@ $(document).ready(function(){
         terminal.__output('-bash: '+command+': command not found');
       }
     }
+  });
 
+
+  /* internal link handler */
+  $('a.link[href*="http://rafael.pt/#"]').on('click', function(e){
+    window.location = $(e).attr('href');
   });
 
 });
