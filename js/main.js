@@ -219,10 +219,7 @@ $(document).ready(function(){
 
   /* internal link handler */
   $('a.link[href*="http://rafael.pt/#"]').on('click', function(e){
-<<<<<<< HEAD
     e.preventDefault();
-=======
->>>>>>> 376188ff7337ac56d1d04758c3c82bd3cd00fb39
     window.location = $(e).attr('href');
   });
 
