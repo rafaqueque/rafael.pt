@@ -1,6 +1,6 @@
 {
   "name": "Rafael Albuquerque",
-  "description": "<p>At the moment, I have only one (real) project launched and a useless landing page, but I'm working on new stuff and I'm excited about it.</p><p>Can't wait to share with everyone!</p>",
+  "description": "<p>Nothing much to show off, but working on exciting stuff at the moment. Stay tuned!</p>",
   "projects": [
     { 
       "url": "http://rafael.pt", 
@@ -11,11 +11,6 @@
       "url": "http://canileave.com/#new+york", 
       "site": "canileave.com",
       "description": "Can I leave? — Real-time Weather Report" 
-    },
-    { 
-      "url": "https://github.com/rafaqueque/jquery-typewriter", 
-      "site": "jquery-typewriter",
-      "description": "[plugin] jQuery Typewriter - yet another wat to get punched in the face" 
-    } 
+    }
   ] 
 }

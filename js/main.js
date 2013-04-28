@@ -131,7 +131,7 @@ function Terminal()
                 /* template json */
                 var data = {
                   name: "Rafael Albuquerque",
-                  description: "<p>Oh, my repos.</p>",
+                  description: "<p>My open-source repositories get some love from time to time.</p>",
                   repositories: repositories
                 };
  
