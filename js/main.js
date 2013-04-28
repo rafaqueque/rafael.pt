@@ -29,7 +29,7 @@ function Terminal()
   /* output command */
   this.__output = function(args)
   {
-    $('form[name="terminal"] div').html(args ? args+'<br><br>type "help" for more information.' : '');
+    $('form[name="terminal"] div').html(args ? args+'<br><br>type `help` for more information' : '');
     $('form[name="terminal"] input').val('');
     return true;
   }
@@ -38,7 +38,11 @@ function Terminal()
   /* 'help' command */
   this.help = function(args)
   {
-    this.__output('Usage: <br> "ls" &mdash; view existing pages <br> "cd [page]" &mdash; load page <br> "clear" &mdash; clear everything <br> "help" &mdash; this');
+    this.__output('Command list: <br> '+
+                    '`ls` &mdash; list all pages available<br> '+
+                    '`cd [page]` &mdash; load page specified <br> '+
+                    '`clear` &mdash; clear terminal output <br> '+ 
+                    '`help` &mdash; list all commands available');
     return true;
   }
 
@@ -107,7 +111,7 @@ function Terminal()
             });
           });
 
-          this.__output('page "'+args+'" loaded. type "ls" to view the available pages.');
+          this.__output('loading "'+args+'"... <br>page "'+args+'" loaded! type `ls` to list all pages available');
         }
 
         /* if page is dynamic */
@@ -138,12 +142,11 @@ function Terminal()
                 $('.container').html(Mustache.to_html(template, $.parseJSON(JSON.stringify(data))));
 
                 window.location.hash = args;
-                $('form[name="terminal"] input').val('cd '+args);
 
               });
             });
 
-            this.__output('page "'+args+'" loaded. type "ls" to view the available pages.');
+            this.__output('loading "'+args+'"... <br>page "'+args+'" loaded! type `ls` to list all pages available');
 
           }
         }
@@ -151,7 +154,7 @@ function Terminal()
       }
       else
       {
-        this.__output('page "'+args+'" not found! type "ls" to view the available pages.');
+        this.__output('loading "'+args+'"... <br>error! page "'+args+'" not found! type `ls` to list all pages available');
       }
     }
     return true;
