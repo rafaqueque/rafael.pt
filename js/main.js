@@ -218,9 +218,7 @@ $(document).ready(function(){
 
 
   /* internal link handler */
-  $('a.link[href*="http://rafael.pt/#"]').on('click', function(e){
-    e.preventDefault();
-    window.location = $(e).attr('href');
+  $(document).on('click', 'a.link[href*="#"]', function(el){
+    terminal.cd($(this).attr('href').replace('#',''));
   });
-
 });
