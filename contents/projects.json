@@ -11,6 +11,11 @@
       "url": "http://canileave.com/#new+york", 
       "site": "canileave.com",
       "description": "Can I leave? — Real-time Weather Report" 
+    }, 
+    { 
+      "url": "https://chrome.google.com/webstore/detail/gmail-checker-lite/ehecgbjlfigjeeapplnmliblgpkjaeme", 
+      "site": "Gmail Checker Lite",
+      "description": "A Chrome extension that checks your email for new messages." 
     }
   ] 
 }
