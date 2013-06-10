@@ -13,6 +13,11 @@
       "description": "Can I leave? — Real-time Weather Report" 
     }, 
     { 
+      "url": "http://www.responsly.com", 
+      "site": "Responsly",
+      "description": "Server monitoring service for people." 
+    }, 
+    { 
       "url": "https://chrome.google.com/webstore/detail/gmail-checker-lite/ehecgbjlfigjeeapplnmliblgpkjaeme", 
       "site": "Gmail Checker Lite",
       "description": "A Chrome extension that checks your email for new messages." 
