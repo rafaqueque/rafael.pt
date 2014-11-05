@@ -3,7 +3,7 @@ body
   margin:0;
   padding:0;
 	background-color:white;
-	font-family: 'Courier New';
+	font-family: Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, serif;
 	font-size:15px;
 	color:#333;
 }
