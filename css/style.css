@@ -2,10 +2,10 @@ body
 {
   margin:0;
   padding:0;
-	background-color:white;
-	font-family: Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, serif;
-	font-size:15px;
-	color:#333;
+  background-color:white;
+  font-family: Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, serif;
+  font-size:13px;
+  color:#333;
 }
 
 h1
@@ -47,6 +47,6 @@ h1
   background-color:black;
   color:white;
   outline:none;
-  font-family:'Courier New';
+  font-family: Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, serif;
   font-size:15px;
 }
