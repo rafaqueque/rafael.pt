@@ -8,6 +8,11 @@
       "description": "This useless landing page." 
     }, 
     { 
+      "url": "http://numbers.today", 
+      "site": "numbers.today",
+      "description": "Count your stuff, learn from data." 
+    },
+    { 
       "url": "http://canileave.com/#new+york", 
       "site": "canileave.com",
       "description": "Can I leave? — Real-time Weather Report with strike informations for the day." 
